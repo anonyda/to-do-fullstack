@@ -1,0 +1,30 @@
+
+app.js --> onload()
+components
+    task.js --> create task append to rootdiv [input: task object  =>output: <div>(todo)]
+        => eventlistner --> updateTodo / deleteTodo on buttons
+apicall
+    apicalls.js --> fetch data
+actions
+    domOperations.js
+        --[ => getTodos() function
+            => updateTodo() function / completeTodo() function
+            => deleteTodo() function ]
+
+
+
+Folder Structure
+
+index.html
+src
+    --> app.js
+    -- components
+        --> task.js
+    -- apiCalls
+        --> taskAPI.js
+    -- actions
+        --> domOperations.js
+styles
+assets
+    -- images
+            
