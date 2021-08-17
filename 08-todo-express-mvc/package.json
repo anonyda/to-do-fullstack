@@ -1,0 +1,23 @@
+{
+  "name": "08-todo-express-mvc",
+  "version": "1.0.0",
+  "description": "This project demonstrates the MVC Cpntroller",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "MVC",
+    "Architecture",
+    "Express"
+  ],
+  "author": "Nida Shaikh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "uniqid": "^5.3.0"
+  }
+}
