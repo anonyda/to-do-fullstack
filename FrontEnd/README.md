@@ -1,100 +1,36 @@
-# To Do List Backend 
+# To Do List
+This To Do List fetches data from a remote server hosted on Heroku. You can access your To Do List from anywhere, and make changes on the go. 
+The page is styled using custom CSS.
 
-This project is a backend REST API that performs CRUD operations for a ToDo List. The backend is built using Node.js and Express. 
+## Live Link 
+[https://anonyda.github.io/to-do/](https://anonyda.github.io/to-do/)
 
-## Installation
+## The Logic
+1. Add new Task
+2. Strike Task if completed
+3. Delete Task
+4. Update Task Content
+5. Save Tasks on Local Storage
 
-Before installing this project, you need to have [Node.js](https://nodejs.dev/download/) on your machine.  
-Fork or clone this repository, and run the following commands in the terminal at the root directory.
-
-```bash
-npm install
-npm run start
-```
-These two commands will install all the dependencies for this project and run the app in the development mode. 
-
-## Features
-* Gets all tasks
-* Gets a task by ID
-* Updates a task
-* Deletes a task
-
-## API Endpoints
-
-### Fetch the tasks
-
-###  ```GET /tasks```
-
-A request to this endpoint returns a response with all the tasks.
-
-###  ```GET /tasks/taskId```
-A request to this endpoint requires a Task ID to be passed in the URL. If such a task with the given Task ID exists, you get a response containing the task you requested for.  
-If the task does not exist, you get the ```404``` status code. 
-
-### Create New Task
-
-### ```POST /tasks```
-This endpoint requires a body to be passed along with the request. If a valid body is passed with the request, a new task will be created.  
-If not, you get the ```400 Bad Request``` status code.  
+## Rendering Tasks
+When the browser loads for the first time, it sends a ```GET``` request to the server to fetch all tasks.
+The response contains an array of existing tasks on the server, and the application renders all the tasks to the DOM. The ```createTaskDiv()``` function takes a task object as in input and renders it to the DOM by creating relevant DOM nodes.
 
 
-**Sample Body**
-```javascript
-{
-    "content": "Your task content goes here.",
-    "createdAt": "Task creation date",
-    "updatedAt": "Task updation date"
-}
-```
-All these values are required to create a new Task.
-
-### Update A Task
-
-### ``` PUT /tasks/taskId```
-This endpoint will modify an existing task if it exists. It requires a valid task ID for modification. An additional key ```isComplete``` is also required in the body, for updating the task completion status.    
-
-**Sample Body**
-```javascript
-{
-    "content": "Modified task content goes here.",
-    "createdAt": "Task creation date",
-    "updatedAt": "Task updation date",
-    "isComplete": true/false
-}
-```
-
-### Delete A Task
-
-### ``` DELETE /tasks/taskId```
-This endpoint will delete an existing task. It requires a valid task ID for deletion. If the task does not exist, the response contains ```404``` status code.   
-
-## Additional Details
-
-* Uses MVC Architecture
-* Validates requests and detects malformed body
-* Uses File Storage to store tasks
+## Adding Tasks
+When you add a task, it creates a sends a ```POST``` request with the appropriate task content. If the task is successfully created, a response containing the created task is received.
+The application then renders it to the DOM.
 
 
-## Directory Structure
+## Updating Tasks
+Updating tasks includes both, striking the task when completed, and changing the task content. The application sends a ```PUT``` request to the server with the updates in the request body. These updates sent to the server, and in return we get a response whether our update was successful or not. If successful, the updated task is re-rendered on the DOM.
 
-```bash
-.
-├── app.js
-├── package.json
-├── package-lock.json
-├── README.md
-├── controllers
-│   └── taskController.js
-├── data
-│   └── tasks.json
-├── models
-│   └── taskModel.js
-├── routes
-│   └── taskRouter.js
-└── utils
-    └── sendResponse.js
+## Deleting Tasks
+When you delete a task, a ```DELETE``` request is sent to the server with the appropriate TaskId. If the task is successfully deleted from the server, we get an ```204``` response, and the task is removed from the DOM.
 
-```
-
-## Try It Yourself
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/13174206-e9e34665-d623-4fb7-be38-499dde8cddde?action=collection%2Ffork&collection-url=entityId%3D13174206-e9e34665-d623-4fb7-be38-499dde8cddde%26entityType%3Dcollection%26workspaceId%3Df3c769ec-7032-4d9f-9b5a-b5fa49b429da)
+### Concepts Applied
+<li> DOM Manipulation with JavaScript
+<li> Asynchronous Functions
+<li> Integration with Remote Server
+<li> ES6 Functions
+<li> Git
