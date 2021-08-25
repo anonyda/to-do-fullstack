@@ -1,23 +1,19 @@
 {
-  "name": "08-todo-express-mvc",
+  "name": "02-connect-db",
   "version": "1.0.0",
-  "description": "This project demonstrates the MVC Cpntroller",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e js",
+    "dev": "nodemon server.js",
     "start": "node app.js"
   },
-  "keywords": [
-    "MVC",
-    "Architecture",
-    "Express"
-  ],
   "author": "Nida Shaikh",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "uniqid": "^5.3.0"
+    "mongoose": "^5.13.7",
+    "uniqid": "^5.4.0"
   }
 }
