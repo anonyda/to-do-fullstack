@@ -1,17 +1,10 @@
-const path = require('path');
 const express = require('express');
-const dotenv = require('dotenv');
-const taskRouter = require('./routes/taskRouter');
-const {getAllTasks, getTaskById} = require('./controllers/taskController');
 
+const taskRouter = require('./routes/taskRouter')
 
 const app = express();
-
-dotenv.config({ path: './config.env' });
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
-
+app.use(express.urlencoded({extended: false}));
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", req.headers.origin);
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
@@ -19,13 +12,14 @@ app.use(function(req, res, next){
     next();
 })
 
+app.get('/', (req, res) => {
+    res.status(200).json({
+        message: 'Successful.'
+    })
+})
+
 app.use('/tasks', taskRouter);
 
-// app.get('/tasks', getAllTasks);
-// app.get('/tasks/:taskId', getTaskById);
+// app should start when DB is connected
 
-let port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Application started at port ${port}`)
-});
+module.exports = app;
