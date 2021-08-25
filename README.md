@@ -12,7 +12,7 @@ On the Localhost, you can run the backend on two modes
 1. File System
 2. Local MongoDB
 
-To know more about how to switch between the modes, [click here to know more](https://github.com/anonyda/to-do-fullstack/tree/master/BackEnd#readme).
+To know more about how to switch between the modes, [click here](https://github.com/anonyda/to-do-fullstack/tree/master/BackEnd#readme).
 
 
 If you want to run this application on your machine, you can follow this guide.
