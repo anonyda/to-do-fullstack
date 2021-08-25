@@ -1,11 +1,33 @@
 # To Do List Backend 
 
 This project is a backend REST API that performs CRUD operations for a ToDo List. The backend is built using Node.js and Express. 
+The data storage has two modes:
+1. File Storage
+2. Local MongoDB
 
 ## Installation
 
+### Modes
+
 Before installing this project, you need to have [Node.js](https://nodejs.dev/download/) on your machine.  
 Fork or clone this repository, and run the following commands in the terminal at the root directory.
+
+#### File Mode
+If you're running the backend on the file mode, you will have your storage on your local disk storage.
+All your tasks will be stored as an array under the ```/data/tasks.json``` file.
+
+#### Database Mode
+With the Database Mode, you will be able to perform CRUD Operations on the Local MongoDB database. You will have to install [MongoDB](https://www.mongodb.com/try/download/community) locally on your machine.
+Run the ```mongod``` command on your terminal before starting the application.
+
+#### Switching Modes
+In the config.env file, you can change the ```DATA_SOURCE``` variable to either of the following options:
+1. ```DATA_SOURCE = Database```
+2. ```DATA_SOURCE = File```
+
+Default mode is ```Database```
+
+After you have configured the mode, you can run the following commands to start the backend server.
 
 ```bash
 npm install
@@ -18,6 +40,8 @@ These two commands will install all the dependencies for this project and run th
 * Gets a task by ID
 * Updates a task
 * Deletes a task
+
+
 
 ## API Endpoints
 
@@ -72,7 +96,7 @@ This endpoint will delete an existing task. It requires a valid task ID for dele
 
 * Uses MVC Architecture
 * Validates requests and detects malformed body
-* Uses File Storage to store tasks
+* Follows Javascript Adapter Pattern
 
 
 ## Directory Structure
@@ -80,19 +104,22 @@ This endpoint will delete an existing task. It requires a valid task ID for dele
 ```bash
 .
 ├── app.js
+├── server.js
+├── config.env
 ├── package.json
-├── package-lock.json
 ├── README.md
-├── controllers
+├── adapters
+│   ├── fileAdapter.js
+│   └── mongoAdapter.js
+├── controller
 │   └── taskController.js
 ├── data
 │   └── tasks.json
-├── models
+├── model
+│   ├── taskConstructor.js
 │   └── taskModel.js
-├── routes
-│   └── taskRouter.js
-└── utils
-    └── sendResponse.js
+└── routes
+    └── taskRouter.js
 
 ```
 
